@@ -1,27 +1,41 @@
 const assert = require('chai').assert;                            
 //http://chaijs.com/ is a BDD & TDD language which runs at NodeJS and can be combined with testing frameworks like "mocha" 
+// While you write a Unittest you dont need to reduce code the important thing is to write tests which are easy to read and independent.
 
-//This function uses a "chai" method named "assert.equal" to check if the method "Math.sqrt" returns the expected value  
-function checkSqrtEqualsExpectedValue(square,root)
+// The function "describe()" is used to give your test a naming
+describe('squareRoot Unit tests', function()
 {
-    it(`result of sqrt(${square}) === ${root} `,function()
-    {
-        assert.equal(Math.sqrt(square),root);
-    })
-}
+    //The function "it()" runs single Unit test.
+    //The "assert" class gives you methods to test values.
+    //I used "Math.sqrt" to simulate a function that gets the root of a square.
+    //I wrote the Unit tests to cover 3 different cases.
 
-describe('sqrt function Unittest',function()
-{
-    /*I was forced to make an exeption to test the value of -1 because the root of it was NaN(not a number)
-    This function is used to check if the root of -1 does equal NaN */
 
-    it(`result of sqrt(-1) === NaN`,function()
+    it(`sqrt of -1 return NaN`, function() //This Unit test checks if the result of -1 equals NaN
     {
-        assert.isNaN(Math.sqrt(-1));
+        result = Math.sqrt(-1);
+
+        assert.isNaN(result);
     })
 
-    //The function gets called with different parameters to check if the result matches the expected one
-    checkSqrtEqualsExpectedValue(0,0);
-    checkSqrtEqualsExpectedValue(4,2);
-    checkSqrtEqualsExpectedValue(16,4);
+    it(`sqrt of 0 return 0 `, function() //This Unit test checks if the result of 0 equals 0
+    {
+        result = Math.sqrt(0);
+
+        assert.equal(result, 0);
+    })
+
+    it(`sqrt of 4 return 2`, function() //This Unit test checks if the result of 4 equals 2
+    {
+        result = Math.sqrt(4);
+
+        assert.equal(result, 2);
+    })
+
+    it(`sqrt of 16 return 4`, function() //This Unit test checks if the result of 16 equals 4
+    {
+        result = Math.sqrt(16);
+
+        assert.equal(result, 4);
+    })
 })
